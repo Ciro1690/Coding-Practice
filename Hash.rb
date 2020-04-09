@@ -55,3 +55,72 @@ def last_index(str, char) #takes in a string and a character, returns the last i
       i-=1
     end
 end
+
+def most_vowels(sentence) #takes in a sentence and returns the word with the most characters.
+    hash = {}
+    sentence.split.each do |word|
+      hash[word] = vowel_count(word)
+    end
+    sorted = hash.sort_by {|k,v| v}
+    return sorted[-1][0]
+   
+   end
+
+def vowel_count(word)
+    vowels = "aeiou"
+    count = 0
+    word.each_char do |letter|
+    if vowels.include?(letter)
+        count +=1
+    end
+    end
+    return count
+end
+
+def prime?(num) #determines if a number is prime
+if num < 2
+    return false
+end
+
+(2...num).each do |num1|
+    if num % num1 == 0
+    return false
+    end
+end
+return true
+end
+
+def pick_primes(numbers)
+new_array = []
+numbers.each do |num|
+    if prime?(num)
+    new_array << num
+    end
+end
+return new_array
+end
+
+def prime?(num) #determines if a number is prime
+if num < 2
+    return false
+end
+
+(2...num).each do |num1|
+    if num % num1 == 0
+    return false
+    end
+end
+return true
+end
+
+def pick_primes(numbers) #takes in an array and returns a new array with only prime numbers.
+    new_array = []
+    numbers.each do |num|
+      if prime?(num)
+        new_array << num
+      end
+    end
+    return new_array
+   end
+   
+   
