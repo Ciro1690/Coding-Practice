@@ -123,4 +123,56 @@ def pick_primes(numbers) #takes in an array and returns a new array with only pr
     return new_array
    end
    
+def prime_factors(num) #takes in a number and returns an array of all the prime factors of that number.
+array = []
+(2...num).each do |num1|
+    if num % num1 == 0
+     if prime?(num1)
+        array << num1
+     end
+    end
+end
+return array
+end
+
+def greatest_factor_array(arr) #takes in an array and returns the greatest factor for each element. If prime, it just returns the same number.
+    new_array = []
+     arr.each do |num|
+       new_array << greatest_factor(num)
+     end
+     return new_array  
+   end
    
+   def greatest_factor(num)
+     arr = []
+     (1..num).each do |num1|
+       if num % num1 == 0
+         arr << num1
+       end
+     end
+     if arr[-2] == 1
+       return arr[-1]
+     else
+       return arr[-2]
+     end
+   end
+
+   def perfect_square?(num) #lets you know if a value is a perfect square.
+	(1..num-1).each do |ele|
+      if ele * ele == num
+        return true
+      end
+    end
+  return false
+end
+
+def triple_sequence(start, length) #takes in two values, returns an array of the start multiplied by 3 the length number of times.
+	arr = []
+  	arr << start
+  	length2 = length-1
+  	length2.times.each do start *=3
+      arr << start
+    end
+  return arr
+  	  
+end
