@@ -176,3 +176,74 @@ def triple_sequence(start, length) #takes in two values, returns an array of the
   return arr
   	  
 end
+
+def summation_sequence(start, length) #takes in a number and adds the summation to an array length number of times
+  array = []  
+  i = 0
+  array << start
+  while i < length-1
+    array << sum_num(start)
+    i+=1
+    start = array[i]
+  end
+  return array
+end
+
+def sum_num(num)
+	new_num = 0
+  	i = 0
+  	while i <= num
+      new_num += i
+      i+=1
+    end
+  return new_num
+end
+
+def fibonacci(length) #returns the fibonacci value of any number
+	if length == 0
+      return []
+    elsif length == 1
+      return [1]
+    end
+  
+    nums = [1,1]
+  	while nums.length < length
+      last = nums[-1]
+      second_to_last = nums[-2]
+      element = last + second_to_last
+      nums << element
+    end
+  return nums
+end
+
+def caesar_cipher(str, num) #takes in a string and shifts all letters over num indexes in the alphabet.
+  alphabet = "abcdefghijklmnopqrstuvwxyz"
+  new_str = ""
+  str.each_char do |char|
+    old = alphabet.index(char)
+    new = old+num
+    new_num = alphabet[new%26]
+    new_str += new_num
+  end  
+  return new_str
+end
+
+def vowel_cipher(string) #takes in a string and returns a new string where each vowel is replaced by the next vowel in the alphabet.
+	vowels = "aeiou"
+  	new_string = ""
+  	string.each_char do |char|
+      if vowels.include?(char)
+        old_index = vowels.index(char) 
+        new_index = old_index + 1 
+        new_letter = vowels[new_index%5]
+        new_string += new_letter
+      else
+        new_string += char
+      end
+    end
+    return new_string
+end
+
+
+
+  
