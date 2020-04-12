@@ -275,3 +275,50 @@ def double_letter_count(string) #counts the number of times a letter appears twi
       end
       return array
     end
+
+    def all_else_equal(arr) #takes in an array and returns an element in the array equal to half the sum of the total array, nil otherwise.
+      sum = 0
+      output = 0
+      arr.each do |nums|
+        sum += nums
+      end
+      arr.each_with_index do |nums,i|
+        if (sum/2) == nums
+          output +=nums
+        end
+      end
+      if (output > 1)
+        return output
+      else
+        return nil
+      end
+    end
+    
+    def anagrams?(word1, word2) #returns a boolean indicating if the two inputs are anagrams.
+      return hash(word1) == hash(word2)
+    end
+    
+    def hash(word)
+      count = Hash.new(0)
+      word.each_char {|char| count[char] +=1}
+      return count
+    end  
+
+    def consonant_cancel(sentence) #takes in a string and returns a new string where all words begin with the first vowel and any consonant before it is removed.
+      array = []
+    words = sentence.split(" ")
+      words.each do |word|
+        array << remove_consonant(word)
+      end
+    return array.join(" ")
+  end
+  
+  def remove_consonant(word)
+    vowels = "aeiou"
+    word.each_char.with_index do |char,i|
+      if vowels.include?(char)
+        return word[i..-1]
+      end
+    end
+  end
+  
