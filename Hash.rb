@@ -244,6 +244,34 @@ def vowel_cipher(string) #takes in a string and returns a new string where each 
     return new_string
 end
 
-
-
+def double_letter_count(string) #counts the number of times a letter appears twice in a row in a string.
+  count = 0
+    string.each_char.with_index do |char,i|
+      if string[i] == string[i+1]
+        count +=1
+      end
+    end
+    return count
+  end
   
+  def adjacent_sum(arr) #takes in an array and returns a new array with the sums of adjacent numbers.
+    new_array = []
+    i = 0
+     while i < arr.length-1
+       new_val = arr[i] + arr[i+1]
+       new_array << new_val
+     i+=1
+     end
+    return new_array
+  end
+
+  def pyramid_sum(base) #takes an array and returns a 2D array of the adjacent sums of each value.
+    array = []
+    array << base
+    i = 0
+      while i < base.length-1
+        array.unshift(adjacent_sum(array[0]))
+      i+=1
+      end
+      return array
+    end
